@@ -13,7 +13,12 @@
 O projeto consiste em uma aplicação que, dado uma origem e um destino entre a listagem de aeroportos disponível, retorna o caminho de menor custo entre os dois lugares. O Voo Barato limita seu escopo aos 5 países com mais aeroportos do mundo.
 
 ## Screenshots
-Adicione 3 ou mais screenshots do projeto em funcionamento.
+![image](https://user-images.githubusercontent.com/61520601/130548787-a3ad0969-513c-4fce-8f29-c0186898f8a6.png)
+
+![image](https://user-images.githubusercontent.com/61520601/130548812-b45af411-f6e2-471d-aed5-6c1e0acc1a46.png)
+
+![image](https://user-images.githubusercontent.com/61520601/130548849-c9467484-6a4b-4073-bee9-0768e0a9e67c.png)
+
 
 ## Instalação 
 **Linguagem**: JavaScript<br>
