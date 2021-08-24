@@ -2,6 +2,7 @@ export default class Node {
     constructor(airport) {
         this.airport = airport;
         this.neighbors = new Map(); // mapeia por aeroporto vizinho e voos
+        this.isVisited = false;
     }
 
     addNeighbor(destiny, price, time) {
