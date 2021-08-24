@@ -8,7 +8,7 @@ import Collapse from "@material-ui/core/Collapse";
 import { Alert } from "@material-ui/lab";
 import { getCountries } from "./structures/api";
 import { cityCode } from "./structures/cityCode.json";
-import Graph from "./structures/graph";
+import Graph from "./structures/Graph";
 import "./App.css";
 import Map from "./Map";
 

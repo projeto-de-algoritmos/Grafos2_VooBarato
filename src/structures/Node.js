@@ -5,26 +5,25 @@ export default class Node {
         this.isVisited = false;
     }
 
-    addNeighbor(destiny, price, time) {
+    addNeighbor(destiny, price) {
         if (this.neighbors.has(destiny)) {
             this.neighbors.get(destiny.airport).push(
-                new Edge(this.airport, destiny, price, time)
+                new Edge(this.airport, destiny, price)
             );
         } else {
             this.neighbors.set(destiny, []);
             this.neighbors.get(destiny).push(
-                new Edge(this.airport, destiny, price, time)
+                new Edge(this.airport, destiny, price)
             );
         }
     }
 }
 
 class Edge {
-    constructor(origin, destiny, price, time) {
+    constructor(origin, destiny, price) {
         this.origin = origin;
         this.destiny = destiny;
         this.price = price;
-        this.time = time;
     }
 
     getPrice() {
