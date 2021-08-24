@@ -1,4 +1,5 @@
-import Node from "./Node"
+import Node from "./Node";
+import PQ from "./PriorityQueue";
 
 export default class Graph {
     constructor() {
@@ -26,4 +27,21 @@ export default class Graph {
             this.nodes.get(originAirport).addNeighbor(destinyAirport, price);
         })
     }
+
+    // dijkstra(origin, destiny) {
+    //     const pq = new PQ();
+    //     const paths = new Map();
+
+    //     paths.set(origin.airport, [0, origin.airport])
+    //     origin.visitNode();
+
+    //     const current = origin;
+
+    //     while (!destiny.isVisited()) {
+    //         for (let [k, v] of current.neighbors) {
+
+    //         }
+    //     }
+
+    // }
 }

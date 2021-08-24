@@ -2,7 +2,7 @@ export default class Node {
     constructor(airport) {
         this.airport = airport;
         this.neighbors = new Map(); // mapeia por aeroporto vizinho e voos
-        this.isVisited = false;
+        this.visited = false;
     }
 
     addNeighbor(destiny, price) {
@@ -16,6 +16,14 @@ export default class Node {
                 new Edge(this.airport, destiny, price)
             );
         }
+    }
+
+    visitNode() {
+        this.visited = true;
+    }
+
+    isVisited() {
+        return this.visited;
     }
 }
 
