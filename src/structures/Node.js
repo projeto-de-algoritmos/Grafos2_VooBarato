@@ -5,36 +5,32 @@ export default class Node {
         this.visited = false;
     }
 
-    addNeighbor(destiny, price) {
-        if (this.neighbors.has(destiny)) {
-            this.neighbors.get(destiny.airport).push(
-                new Edge(this.airport, destiny, price)
-            );
-        } else {
-            this.neighbors.set(destiny, []);
-            this.neighbors.get(destiny).push(
-                new Edge(this.airport, destiny, price)
-            );
-        }
+  addNeighbor(destiny, price) {
+    if (this.neighbors.has(destiny)) {
+      this.neighbors.get(destiny).push(new Edge(this.airport, destiny, price));
+    } else {
+      this.neighbors.set(destiny, []);
+      this.neighbors.get(destiny).push(new Edge(this.airport, destiny, price));
     }
+  }
 
-    visitNode() {
-        this.visited = true;
-    }
+  visitNode() {
+    this.visited = true;
+  }
 
-    isVisited() {
-        return this.visited;
-    }
+   isVisited() {
+    return this.visited;
+   }
 }
 
 class Edge {
-    constructor(origin, destiny, price) {
-        this.origin = origin;
-        this.destiny = destiny;
-        this.price = price;
-    }
+  constructor(origin, destiny, price) {
+    this.origin = origin;
+    this.destiny = destiny;
+    this.price = price;
+  }
 
-    getPrice() {
-        return this.price;
-    }
+  getPrice() {
+    return this.price;
+  }
 }
