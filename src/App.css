@@ -10,9 +10,23 @@
   display: flex;
 }
 
-.Map {
+.MapContent {
   width: 70%;
   height: 100%;
+}
+
+.MapWrap {
+  width: 100%;
+  height: 100%;
+}
+
+.mapboxgl-control-container {
+  display: none;
+}
+
+.mapboxgl-canvas-container {
+  height: 100vh;
+  width: 70vw;
 }
 
 .SideBar {

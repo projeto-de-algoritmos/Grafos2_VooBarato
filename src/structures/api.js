@@ -49,3 +49,6 @@ export const getCountries = async (origin, time, destination, graph) => {
       }
     });
 };
+
+// export const getLatLong = async () => {
+// };

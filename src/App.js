@@ -10,6 +10,7 @@ import { getCountries } from "./structures/api";
 import { cityCode } from "./structures/cityCode.json";
 import Graph from "./structures/graph";
 import "./App.css";
+import Map from "./Map";
 
 const filter = createFilterOptions();
 
@@ -71,6 +72,10 @@ function App() {
     setMinDate(`${year}-${month}-${date}`);
   }, [minDate]);
 
+  // useEffect(() => {
+  //   getLatLong();
+  // }, []);
+
   const searchTravel = () => {
     if (origin === "" || destination === "" || selectedDate === "") {
       setAlert(true);
@@ -95,7 +100,10 @@ function App() {
   return (
     <div className="App">
       <div className="Content">
-        <div className="Map"></div>
+        <div className="MapContent">
+          <div></div>
+          <Map />
+        </div>
         <div className="SideBar">
           <div className="Title">
             <h3>VooBarato</h3>
