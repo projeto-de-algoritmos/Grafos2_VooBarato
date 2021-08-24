@@ -10,7 +10,7 @@
 | 18/0021974  |  Leonardo da Silva Gomes |
 
 ## Sobre 
-Descreva os objetivos do seu projeto e como ele funciona. 
+O projeto consiste em uma aplicação que, dado uma origem e um destino entre a listagem de aeroportos disponível, retorna o caminho de menor custo entre os dois lugares. O Voo Barato limita seu escopo aos 5 países com mais aeroportos do mundo.
 
 ## Screenshots
 Adicione 3 ou mais screenshots do projeto em funcionamento.
@@ -21,11 +21,25 @@ Adicione 3 ou mais screenshots do projeto em funcionamento.
 Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
 
 ## Uso 
-Explique como usar seu projeto caso haja algum passo a passo após o comando de execução.
+1. Após clonar o repositório com o seguinte comando:
+```
+git clone https://github.com/projeto-de-algoritmos/Grafos2_VooBarato.git
+```
 
-## Outros 
-Quaisquer outras informações sobre seu projeto podem ser descritas abaixo.
+2. É preciso instalar as dependências com o comando:
+```
+npm install
+```
+ou então
+```
+yarn install
+```
 
-
-
-
+3. Após estes passos, execute a aplicação com
+```
+npm start
+```
+ou então
+```
+yarn start
+```
