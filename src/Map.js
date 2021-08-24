@@ -1,8 +1,11 @@
 import { useRef, useState, useEffect } from "react";
 import mapboxgl from "mapbox-gl";
+// import { getLatLong } from "./structures/api";
+// import { getCountries } from "./structures/api";
 
-const Map = () => {
+const Map = (countries) => {
   const [map, setMap] = useState(null);
+  // const [listPlaces] = useState(countries);
   const mapContainer = useRef(null);
 
   useEffect(() => {
@@ -17,61 +20,68 @@ const Map = () => {
         zoom: 0,
       });
 
-      // San Francisco
-      const origin = [-122.414, 37.776];
-
-      // Washington DC
-      const destination = [-77.032, 38.913];
-
-      const route = {
-        type: "FeatureCollection",
-        features: [
-          {
-            type: "Feature",
-            geometry: {
-              type: "LineString",
-              coordinates: [origin, destination],
-            },
-          },
-        ],
-      };
-
-      // Calculate the distance in kilometers between route start/end point.
-      const lineDistance = turf.length(route.features[0]);
-
-      const arc = [];
-
-      // Number of steps to use in the arc and animation, more steps means
-      // a smoother arc and animation, but too many steps will result in a
-      // low frame rate
-      const steps = 500;
-
-      // Draw an arc between the `origin` & `destination` of the two points
-      for (let i = 0; i < lineDistance; i += lineDistance / steps) {
-        const segment = turf.along(route.features[0], i);
-        arc.push(segment.geometry.coordinates);
-      }
-
-      // Update the route with calculated arc coordinates
-      route.features[0].geometry.coordinates = arc;
-
       map.scrollZoom.disable();
 
-      map.on("load", () => {
-        // Add a source and layer displaying a point which will be animated in a circle.
-        map.addSource("route", {
-          type: "geojson",
-          data: route,
-        });
+      const places = [
+        [-122.414, 37.776],
+        [-77.032, 38.3333333],
+        [-53.2, -10.913],
+      ];
 
-        map.addLayer({
-          id: "route",
-          source: "route",
-          type: "line",
-          paint: {
-            "line-width": 2,
-            "line-color": "#007cbf",
-          },
+      // listPlaces.countries.forEach((place) => {
+      //   places.push(getLatLong(place));
+      // });
+
+      const routes = [];
+
+      places.forEach((place, id) => {
+        if (id + 1 === places.length) {
+          return;
+        } else {
+          routes.push({
+            type: "FeatureCollection",
+            features: [
+              {
+                type: "Feature",
+                geometry: {
+                  type: "LineString",
+                  coordinates: [place, places[id + 1]],
+                },
+              },
+            ],
+          });
+
+          const lineDistance = turf.length(routes[id].features[0]);
+
+          const arc = [];
+
+          const steps = 500;
+
+          for (let i = 0; i < lineDistance; i += lineDistance / steps) {
+            const segment = turf.along(routes[id].features[0], i);
+            arc.push(segment.geometry.coordinates);
+          }
+
+          routes[id].features[0].geometry.coordinates = arc;
+        }
+      });
+
+      map.on("load", () => {
+        routes.forEach((route, id) => {
+          map.addSource(`route${id}`, {
+            type: "geojson",
+            data: route,
+          });
+
+          map.addLayer({
+            id: `route${id}`,
+            source: `route${id}`,
+            type: "line",
+            paint: {
+              "line-width": 2,
+              "line-color": "#007cbf",
+            },
+          });
         });
       });
     };

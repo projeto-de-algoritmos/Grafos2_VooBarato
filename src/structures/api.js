@@ -27,5 +27,24 @@ export const getCountries = async (origin, time, destination, graph) => {
     });
 };
 
-// export const getLatLong = async () => {
-// };
+export const getLatLong = async (country) => {
+  await axios
+    .get(`https://api.opencagedata.com/geocode/v1/json`, {
+      params: {
+        q: country,
+        key: "34c35a3ff8a64e3fa04be8222982e418",
+      },
+    })
+    .then(function (response) {
+      return response;
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+    .then(function (response) {
+      return [
+        response.data.results[0].geometry.lng,
+        response.data.results[0].geometry.lat,
+      ];
+    });
+};

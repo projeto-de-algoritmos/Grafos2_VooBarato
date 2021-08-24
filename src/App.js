@@ -6,7 +6,7 @@ import TextField from "@material-ui/core/TextField";
 import { Button } from "@material-ui/core";
 import Collapse from "@material-ui/core/Collapse";
 import { Alert } from "@material-ui/lab";
-import { getCountries } from "./structures/api";
+import { getCountries, getLatLong } from "./structures/api";
 import { cityCode } from "./structures/cityCode.json";
 import Graph from "./structures/Graph";
 import "./App.css";
@@ -72,9 +72,9 @@ function App() {
     setMinDate(`${year}-${month}-${date}`);
   }, [minDate]);
 
-  // useEffect(() => {
-  //   getLatLong();
-  // }, []);
+  useEffect(() => {
+    getLatLong("brasilia");
+  }, []);
 
   const searchTravel = () => {
     if (origin === "" || destination === "" || selectedDate === "") {
@@ -103,7 +103,7 @@ function App() {
       <div className="Content">
         <div className="MapContent">
           <div></div>
-          <Map />
+          <Map countries={["brasilia", "paris", "new york"]} />
         </div>
         <div className="SideBar">
           <div className="Title">
@@ -193,7 +193,6 @@ function App() {
                 onSelect={(event) => {
                   setSelectedDate(event.target.value);
                 }}
-                maxDate={() => {}}
                 style={{ width: 300 }}
                 format="YYYY-MM-DD"
                 InputLabelProps={{
