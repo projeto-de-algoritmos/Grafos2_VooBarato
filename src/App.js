@@ -26,8 +26,8 @@ function App() {
         Name: "Estados Unidos",
       },
       {
-        Code: "MZ",
-        Name: "Moçambique",
+        Code: "MX",
+        Name: "Mexico",
       },
       {
         Code: "RU",
@@ -93,8 +93,9 @@ function App() {
       );
     });
     getCountries(`${origin}-sky`, selectedDate, `${destination}-sky`, graph);
-    console.log("leo");
+
     console.log(graph);
+    setTimeout(() => console.log(graph), 10000);
   };
 
   return (
